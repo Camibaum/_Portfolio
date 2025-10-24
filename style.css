@@ -80,6 +80,7 @@ a {
 }
 
 .hero-mark {
+  margin-top: 80px;
   width: min(60vw, 350px);
   height: auto;
   filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.12));
