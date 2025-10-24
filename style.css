@@ -80,7 +80,7 @@ a {
 }
 
 .hero-mark {
-  margin-top: 80px;
+  margin-top: 40px;
   width: min(60vw, 350px);
   height: auto;
   filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.12));
@@ -180,6 +180,7 @@ a {
 /* Højre: tekstkolonne fylder hele sin halvdel, dokket i bunden */
 .info-copy {
   font-weight: 300;
+  line-height: 1.2;
   font-size: 22px;
   height: 100%;
   display: flex;
