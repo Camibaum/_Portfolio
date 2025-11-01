@@ -281,12 +281,20 @@ a {
   }
 
   .project-desc {
-    max-width: 300px;
+    max-width: 250px;
     padding: 0;
     margin: 45px 0 8px 0px;
     display: flex;
     flex-direction: column; /* lodret liste */
   }
+}
+
+.project-desc-bareen {
+  max-width: 200px;
+  padding: 0;
+  margin: 45px 0 8px 0px;
+  display: flex;
+  flex-direction: column; /* lodret liste */
 }
 
 .project-logo {
