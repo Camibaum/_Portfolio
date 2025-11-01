@@ -6,11 +6,15 @@ html,
 body {
   height: 100%;
 }
-body {
+body,
+h1 {
   margin: 0;
-
-  background: #000;
-  color: #fff;
+  font-size: 26px;
+  font-weight: 400;
+  background: #f3f3f3;
+  /* background: #d7cdcd; */
+  /* color: #fff; */
+  color: black;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
   line-height: 1.4;
 }
@@ -58,7 +62,8 @@ a {
   appearance: none;
   background: none;
   border: 0;
-  color: #fff;
+  color: black;
+  /* color: #fff; */
   font: inherit;
   font-size: 28px;
   font-weight: 400;
@@ -100,7 +105,8 @@ a {
   max-width: 92vw; /* beskyt mod overflow på små skærme */
   text-wrap: balance; /* pænere linjebrud, hvis muligt */
   overflow-wrap: anywhere; /* nødbremse mod overflow */
-  color: #f4f4f4;
+  /* color: #f4f4f4; */
+  color: black;
 }
 
 .hero-text {
@@ -108,11 +114,11 @@ a {
   margin: 12px;
   margin-top: 70px;
   font-size: 28px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
   max-width: 92vw; /* beskyt mod overflow på små skærme */
-
-  color: #f4f4f4;
+  color: black;
+  /* color: #f4f4f4; */
 }
 
 /* ---- Info Panel (fullscreen, 10px margin, 10px gap) ---- */
@@ -273,6 +279,14 @@ a {
   .project-title-bareen {
     width: 250px;
   }
+
+  .project-desc {
+    max-width: 300px;
+    padding: 0;
+    margin: 45px 0 8px 0px;
+    display: flex;
+    flex-direction: column; /* lodret liste */
+  }
 }
 
 .project-logo {
@@ -287,13 +301,14 @@ a {
 }
 
 .project-desc {
+  max-width: 400px;
   list-style: none;
   padding: 0;
-  margin: 4px 0 8px 0;
+  margin: 0px 0 8px 0px;
   display: flex;
   flex-direction: column; /* lodret liste */
   gap: 2px;
-  font-size: clamp(12px, 1.1vw, 16px);
+  font-size: clamp(16px, 1.1vw, 26px);
   line-height: 1.4;
   text-transform: uppercase;
 }
@@ -549,4 +564,8 @@ a {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.break {
+  margin: 40px;
 }
