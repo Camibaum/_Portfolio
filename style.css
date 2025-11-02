@@ -324,6 +324,19 @@ a {
   text-transform: uppercase;
 }
 
+.project-desc-2 {
+  max-width: 400px;
+  list-style: none;
+  padding: 0;
+  margin: 40px 00 20px 0px;
+  display: flex;
+  flex-direction: column; /* lodret liste */
+  gap: 2px;
+  font-size: clamp(16px, 1.1vw, 26px);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
 .project-palette {
   width: min(500px, 90vw);
   height: auto;
