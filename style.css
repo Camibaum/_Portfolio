@@ -146,6 +146,7 @@ a {
 
 /* Luk-knap placeres inde i 10px padding */
 .info-close {
+  font-size: 22px;
   position: absolute;
   top: 10px;
   right: 10px;
