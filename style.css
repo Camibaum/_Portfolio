@@ -566,6 +566,7 @@ a {
   background: #000; /* så der ikke blinker hvidt */
   overflow: hidden;
 }
+
 .drive-frame iframe {
   position: absolute;
   inset: 0;
