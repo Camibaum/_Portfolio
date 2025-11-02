@@ -1,13 +1,13 @@
-const body = document.documentElement; // so we can toggle no-scroll on <html>
+const body = document.documentElement; // toggle no-scroll on <html>
 const panel = document.getElementById("infoPanel");
 const openBtn = document.getElementById("infoToggle");
 const closeBtn = document.getElementById("infoClose");
 
 function openPanel() {
+  panel.removeAttribute("hidden"); // <- vis panelet
   panel.classList.add("is-open");
   openBtn.setAttribute("aria-expanded", "true");
   body.classList.add("no-scroll");
-  // flyt fokus til panelet
   closeBtn.focus();
 }
 
@@ -15,6 +15,7 @@ function closePanel() {
   panel.classList.remove("is-open");
   openBtn.setAttribute("aria-expanded", "false");
   body.classList.remove("no-scroll");
+  panel.setAttribute("hidden", ""); // <- skjul panelet igen
   openBtn.focus();
 }
 

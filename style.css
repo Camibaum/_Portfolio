@@ -13,12 +13,8 @@ h1 {
   font-style: normal;
   margin: 0;
   font-size: 26px;
-
   background: #f3f3f3;
-  /* background: #d7cdcd; */
-  /* color: #fff; */
   color: black;
-
   line-height: 1.4;
 }
 a {
@@ -48,25 +44,22 @@ a {
   align-items: start;
   padding: clamp(8px, 2vw, 16px);
   z-index: 50;
-  pointer-events: none; /* så hero klik ikke blokeres; vi gen-aktiverer på elementerne */
+  pointer-events: none;
 }
 .site-header .brand,
 .site-header .info-toggle {
   pointer-events: auto;
 }
-
 .brand img {
   display: block;
   height: auto;
   max-width: clamp(110px, 12vw, 300px);
 }
-
 .info-toggle {
   appearance: none;
   background: none;
   border: 0;
   color: black;
-  /* color: #fff; */
   font: inherit;
   font-size: 28px;
   font-weight: 400;
@@ -86,7 +79,6 @@ a {
   overflow: hidden;
   padding: clamp(12px, 3vw, 24px);
 }
-
 .hero-mark {
   margin-top: 40px;
   width: min(60vw, 350px);
@@ -94,7 +86,6 @@ a {
   filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.12));
   user-select: none;
 }
-
 .hero-name {
   position: absolute;
   left: clamp(12px, 2vw, 8px);
@@ -102,16 +93,12 @@ a {
   margin: 0;
   font-weight: 800;
   line-height: 0.8;
-
-  /* vigtig del: fluid + max bredde + tillad ombrydning */
   font-size: clamp(24px, 12vw, 120px);
-  max-width: 92vw; /* beskyt mod overflow på små skærme */
-  text-wrap: balance; /* pænere linjebrud, hvis muligt */
-  overflow-wrap: anywhere; /* nødbremse mod overflow */
-  /* color: #f4f4f4; */
+  max-width: 92vw;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
   color: black;
 }
-
 .hero-text {
   position: absolute;
   margin: 12px;
@@ -119,75 +106,57 @@ a {
   font-size: 28px;
   font-weight: 400;
   line-height: 1;
-  max-width: 92vw; /* beskyt mod overflow på små skærme */
+  max-width: 92vw;
   color: black;
-  /* color: #f4f4f4; */
 }
 
 /* ---- Info Panel (fullscreen, 10px margin, 10px gap) ---- */
 .info-panel {
-  position: fixed;
+  position: fixed; /* <- korrekt overlay */
   inset: 0;
-  background: #000; /* panel-baggrund kan være sort for stramt look */
+  background: #000;
   color: #eaeaea;
   transform: translateY(-100%);
   transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
   z-index: 100;
 
-  /* Fuld viewporthøjde og 10px ydre margin via padding */
   min-height: 100svh;
-  padding: 10px; /* <-- global “margin” rundt om indholdet */
+  padding: 10px;
   display: grid;
-  overflow: hidden; /* intet cut på desktop */
+  overflow: auto; /* <- scroll på desktop */
+  overscroll-behavior: contain; /* <- ingen “scroll bleed” til body */
 }
 .info-panel.is-open {
   transform: translateY(0);
 }
 
-/* Luk-knap placeres inde i 10px padding */
-.info-close {
-  font-size: 22px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 44px;
-  height: 44px;
-
-  line-height: 1;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-}
-
 /* Grid der fylder hele panelets højde minus padding (10px*2) */
 .info-grid {
-  margin: 0; /* ingen ekstra margin */
+  margin: 0;
   width: 100%;
-  height: calc(100svh - 20px); /* 10px top + 10px bund */
+  min-height: calc(100svh - 20px);
   display: grid;
-  grid-template-columns: 1fr 1fr; /* præcis halv/halv */
-  gap: 10px; /* <-- 10px mellem kolonnerne */
-  align-items: stretch; /* stræk begge kolonner i højden */
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: stretch;
 }
 
-/* Venstre: billede fylder 100% af sin halvdel */
+/* Venstre: billede */
 .info-media {
   margin: 0;
   background: #111;
   overflow: hidden;
-  /* ingen border-radius for helt stramt look */
   border-radius: 0;
-  height: 100%; /* fyld hele cellens højde */
+  height: 100%;
 }
 .info-media img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* beskær så det altid fylder uden at forvrænge */
+  object-fit: cover;
 }
 
-/* Højre: tekstkolonne fylder hele sin halvdel, dokket i bunden */
+/* Højre: tekstkolonne */
 .info-copy {
   font-weight: 300;
   line-height: 1.2;
@@ -195,36 +164,58 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* læg teksten ned mod bunden */
-  padding: clamp(16px, 2.2vw, 28px); /* indre luft i tekstfeltet */
-  overflow: auto; /* hvis der er meget tekst, kan man scrolle */
-  /* font-size: clamp(14px, 1.2vw, 18px); */
-  background: #0a0a0a; /* ensartet baggrund i højre halvdel */
+  justify-content: flex-start; /* <- start øverst */
+  gap: 0.75rem;
+  padding: clamp(16px, 2.2vw, 28px);
+  overflow: auto; /* kolonne kan scrolle */
+  background: #0a0a0a;
 }
 .info-copy .contact {
   margin: 0 0 1rem 0;
   text-decoration: underline;
-  text-underline-offset: 6px;
+  text-underline-offset: 4px;
+  line-height: 1.4;
 }
 
-/* ---- Desktop: intet ekstra – det er allerede stramt halv/halv ---- */
+/* CV-boks */
+.info-cv {
+  margin-top: 4px;
+  background: #0c0c0c;
+  color: #eaeaea;
+  padding: clamp(14px, 2vw, 22px);
+  line-height: 1.3;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.info-cv h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.info-cv ul {
+  margin: 0 0 1rem 1.1rem;
+  padding: 0;
+}
+.info-cv li {
+  margin: 0.2rem 0;
+}
+
+/* ---- Desktop: intet ekstra – grundopsætningen ER desktop ---- */
 @media (min-width: 901px) {
-  /* bevidst tom – grundopsætningen ovenfor ER desktoplayoutet */
 }
 
-/* ---- Mobile: én kolonne, stadig 10px gap og ydre margin ---- */
+/* ---- Mobile ---- */
 @media (max-width: 900px) {
   .info-panel {
-    overflow: auto; /* tillad scroll på mobil */
+    overflow: auto;
   }
   .info-grid {
-    height: auto; /* så indhold må vokse i højden */
+    height: auto;
     grid-template-columns: 1fr;
     gap: 10px;
   }
   .info-media {
     height: auto;
-    aspect-ratio: 1/1; /* kvadratisk på mobil – kan justeres */
+    aspect-ratio: 1/1;
   }
   .hero-name {
     font-size: clamp(28px, 12vw, 64px);
@@ -234,18 +225,39 @@ a {
   }
 }
 
+/* Luk-knap — tilbage til originalt udtryk */
+.info-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px; /* større og mere markant */
+  font-weight: 300;
+  line-height: 1;
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.info-close:hover {
+  opacity: 0.7; /* let fade ved hover */
+}
+
 /* projekter */
-
-/* ---------- PROJECTS LAYOUT ---------- */
-/* ---------- PROJECTS LAYOUT (1-kolonne, centreret) ---------- */
-
 .projects {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   padding-inline: clamp(10px, 8vw, 100px);
 }
-
 .project {
   margin-block: clamp(60px, 12vh, 160px);
   display: flex;
@@ -253,23 +265,18 @@ a {
   align-items: center;
   text-align: center;
 }
-
-/* Header */
 .project-header {
   margin-top: 100px;
   display: grid;
   justify-items: center;
   gap: 12px;
 }
-
 .project-title {
   max-width: 300px;
-  /* font-size: clamp(16px, 4vw, 36px); */
   font-weight: 800;
   margin: 0;
   letter-spacing: 0.03em;
 }
-
 .project-title-bareen {
   width: 400px;
   font-weight: 800;
@@ -283,13 +290,12 @@ a {
   .project-title-bareen {
     width: 250px;
   }
-
   .project-desc {
     max-width: 250px;
     padding: 0;
     margin: 45px 0 8px 0px;
     display: flex;
-    flex-direction: column; /* lodret liste */
+    flex-direction: column;
   }
 }
 
@@ -298,46 +304,41 @@ a {
   padding: 0;
   margin: 45px 0 8px 0px;
   display: flex;
-  flex-direction: column; /* lodret liste */
+  flex-direction: column;
 }
-
 .project-logo {
   width: min(100px, 20vw);
   height: auto;
   margin-bottom: 20px;
 }
-
 .project-logo2 {
   width: min(500px, 50vw);
   height: auto;
 }
-
 .project-desc {
   max-width: 400px;
   list-style: none;
   padding: 0;
   margin: 0px 0 8px 0px;
   display: flex;
-  flex-direction: column; /* lodret liste */
+  flex-direction: column;
   gap: 2px;
   font-size: clamp(16px, 1.1vw, 26px);
   line-height: 1.4;
   text-transform: uppercase;
 }
-
 .project-desc-2 {
   max-width: 400px;
   list-style: none;
   padding: 0;
   margin: 40px 00 20px 0px;
   display: flex;
-  flex-direction: column; /* lodret liste */
+  flex-direction: column;
   gap: 2px;
   font-size: clamp(16px, 1.1vw, 26px);
   line-height: 1.4;
   text-transform: uppercase;
 }
-
 .project-palette {
   width: min(500px, 90vw);
   height: auto;
@@ -355,36 +356,27 @@ a {
   width: 100%;
   margin-bottom: 80px;
 }
-
 .media-grid img {
   width: 100%;
   max-width: 700px;
-  /* border-radius: 8px; */
   display: block;
   object-fit: cover;
 }
 
-/* opdateret video --------- */
-/* FÆLLES video-base */
+/* video */
 .video {
   width: 100%;
   margin-top: clamp(40px, 6vh, 60px);
 }
-
-/* Wrapper der styrer aspect-ratio og skalerer både <video> og <iframe> */
 .drive-frame {
   position: relative;
   width: 100%;
-  background: #000; /* undgå hvid blink */
+  background: #000;
   overflow: hidden;
 }
-
-/* Default: 16:9 på mobil for tv/small; reel får sin egen klasse */
 .drive-frame {
   aspect-ratio: 16 / 9;
 }
-
-/* Iframe / video fylder hele rammen */
 .drive-frame iframe,
 .video video {
   position: absolute;
@@ -395,9 +387,7 @@ a {
   object-fit: cover;
 }
 
-/* ----- Varianter ----- */
-
-/* REEL (9:16) – centreret søjle */
+/* Varianter */
 .video--reel {
   display: flex;
   justify-content: center;
@@ -406,8 +396,6 @@ a {
   aspect-ratio: 9 / 16;
   width: clamp(280px, 42vw, 560px);
 }
-
-/* SMALL (16:9) – max 960px, centreret */
 .video--small {
   display: flex;
   justify-content: center;
@@ -416,30 +404,24 @@ a {
   max-width: 960px;
 }
 
-/* TV — på mobil/tablet opfører den sig som 16:9-boks.
-   På desktop: fyld viewport-højde (minus offset) */
 @media (min-width: 900px) {
   :root {
     --header-offset: clamp(40px, 6vh, 60px);
   }
-
   .video--tv {
     width: 100vw;
     height: calc(100vh - var(--header-offset));
   }
-
   .video--tv .drive-frame {
     height: 100%;
-    aspect-ratio: auto; /* tilsidesæt mobilens 16:9 */
+    aspect-ratio: auto;
   }
 }
-
-/* Hvis du et sted stadig bruger <video> uden iframe, behold bare disse: */
 .video video {
   display: block;
 }
 
-/* ------- Mobiljustering */
+/* Mobiljustering */
 @media (max-width: 600px) {
   .projects {
     padding-inline: 10px;
@@ -456,14 +438,13 @@ a {
   display: block;
   width: 100%;
   height: 2px;
-  margin: 8px 0; /* lidt luft over/under */
+  margin: 8px 0;
   background: black;
   border-radius: 2px;
-  flex-shrink: 0; /* hvis den ligger i et flex-element */
-  position: relative; /* sikrer at den ikke kollapser */
-  z-index: 10; /* så den ikke skjules bag hero/project */
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
-
 @media (max-width: 600px) {
   .gradient-line {
     height: 3px;
@@ -473,7 +454,6 @@ a {
 }
 
 /* FOOTER */
-/* FOOTER */
 .site-footer {
   position: relative;
   background: #000;
@@ -481,23 +461,7 @@ a {
   padding: 10px;
   z-index: 1;
 }
-/* subtil top-fade (med fallback hvis --fade mangler) */
-/* .site-footer::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -18px;
-  height: 18px;
-  pointer-events: none;
-  background: var(--fade, linear-gradient(to bottom, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)));
-  opacity: 0.35;
-} */
-
-/* --- Desktop layout ----------------------------------------------------- */
 .footer-inner {
-  /* max-width: 1400px; */
-  /* margin: 0 auto; */
   padding: clamp(12px, 2vw, 24px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -518,71 +482,56 @@ a {
   grid-area: right;
   justify-self: end;
 }
-
-/* type */
 .footer-brand,
 .footer-center span {
-  /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif; */
   font-size: 18px;
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
-
-/* logo */
 .footer-logo {
   display: block;
   max-width: 80px;
   width: auto;
-
   transition: opacity 0.2s ease;
 }
 .footer-right a:hover .footer-logo {
   opacity: 0.85;
 }
-
-/* links arver farve */
 .site-footer a {
   color: inherit;
   text-decoration: none;
 }
 
-/* --- Mobil: centreret stak i ønsket rækkefølge ------------------------- */
 @media (max-width: 560px) {
   .footer-inner {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "left"
-      "center"
-      "right";
+    grid-template-areas: "left" "center" "right";
     row-gap: 6px;
     text-align: center;
   }
   .footer-left,
   .footer-center,
   .footer-right {
-    justify-self: center; /* alt i midten */
+    justify-self: center;
   }
   .footer-brand,
   .footer-center span {
-    white-space: normal; /* må gerne bryde på meget smalle skærme */
+    white-space: normal;
   }
   .footer-logo {
     margin: 8px;
     height: 100px;
-  } /* lidt større logo ok */
+  }
 }
 
 /* ______ */
-
 .drive-frame {
   position: relative;
   width: 100%;
-  /* vælg det format du vil bruge: */
-  aspect-ratio: 16 / 9; /* eller 9/16 til “reel” */
-  background: #000; /* så der ikke blinker hvidt */
+  aspect-ratio: 16 / 9;
+  background: #000;
   overflow: hidden;
 }
-
 .drive-frame iframe {
   position: absolute;
   inset: 0;
@@ -590,7 +539,6 @@ a {
   height: 100%;
   border: 0;
 }
-
 .break {
   margin: 40px;
 }
