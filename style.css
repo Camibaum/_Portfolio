@@ -443,7 +443,7 @@ a {
   width: 100%;
   height: 2px;
   margin: 8px 0; /* lidt luft over/under */
-  background: linear-gradient(to right, #ffffff, #7afa9c);
+  background: black;
   border-radius: 2px;
   flex-shrink: 0; /* hvis den ligger i et flex-element */
   position: relative; /* sikrer at den ikke kollapser */
@@ -454,7 +454,7 @@ a {
   .gradient-line {
     height: 3px;
     margin: 12px 0;
-    background: linear-gradient(to right, #fff, #7afa9c 60%);
+    background: black;
   }
 }
 
