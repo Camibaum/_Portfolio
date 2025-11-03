@@ -83,7 +83,7 @@ a {
   padding: clamp(12px, 3vw, 24px);
 }
 .hero-mark {
-  margin-top: 40px;
+  margin: 12px;
   width: min(60vw, 350px);
   height: auto;
   filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.12));
