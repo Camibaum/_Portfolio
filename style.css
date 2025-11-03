@@ -545,3 +545,22 @@ a {
 .break {
   margin: 40px;
 }
+
+/* video  */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  margin-top: clamp(40px, 6vh, 60px);
+}
+.video-container video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 0;
+}
