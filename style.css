@@ -527,40 +527,89 @@ a {
   }
 }
 
-/* ______ */
+/* ______ */ /* ______ */
 .drive-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9; /* TV-format som standard */
   background: #000;
   overflow: hidden;
 }
+
+/* VIGTIGT: style <video> inde i .drive-frame ligesom iframe */
+.drive-frame video,
 .drive-frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover; /* sørger for beskæring */
+  display: block;
   border: 0;
 }
+
 .break {
   margin: 40px;
 }
 
-/* video  */
-.video-container {
-  position: relative;
+/* video  */ /* === VIDEO FRAMES (REN OPDATERET VERSION) === */
+
+/* Base styling for video-sektioner */
+.video {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  overflow: hidden;
   margin-top: clamp(40px, 6vh, 60px);
 }
-.video-container video {
+
+/* Grundstruktur for alle drive-frames */
+.drive-frame {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* 🟦 TV-format (16:9) */
+.drive-frame--tv {
+  aspect-ratio: 16 / 9;
+}
+
+/* 🟨 Højformat (9:16) */
+.drive-frame--portrait {
+  aspect-ratio: 9 / 16;
+  width: min(90vw, 540px); /* centreret og begrænset bredde */
+  margin: 60px auto; /* centreret horisontalt */
+  border-radius: 12px; /* valgfri runding */
+  overflow: hidden;
+  background: #000;
+}
+
+/* 🟩 Højde-baseret variant (fx 80% af viewport-højde) */
+.drive-frame--80vh {
+  aspect-ratio: auto;
+  height: 80vh;
+}
+@media (max-width: 768px) {
+  .drive-frame--80vh {
+    height: 60vh;
+  }
+}
+
+/* 📺 Video- og iframe-indhold (dækker hele rammen) */
+.drive-frame video,
+.drive-frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* beskærer i stedet for at forvrænge */
   display: block;
   border: 0;
+}
+
+/* 🔸 Mobiljustering til portrait-video */
+@media (max-width: 768px) {
+  .drive-frame--portrait {
+    width: 85vw;
+    margin: 40px auto;
+  }
 }
