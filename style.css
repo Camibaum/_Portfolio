@@ -8,7 +8,10 @@ body {
 }
 body,
 h1 {
-  font-family: "bogart", sans-serif;
+  /* font-family: "bogart", sans-serif; */
+  /* font-family: "gotham", sans-serif; */
+  font-family: Helvetica, sans-serif;
+
   font-weight: 400;
   font-style: normal;
   margin: 0;
@@ -91,7 +94,7 @@ a {
   left: clamp(12px, 2vw, 8px);
   bottom: clamp(6px, 2.4vw, 0px);
   margin: 0;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 0.8;
   font-size: clamp(24px, 12vw, 120px);
   max-width: 92vw;
