@@ -1,0 +1,456 @@
+:root {
+  --bg: #e5e5e5;
+  --text: #0d0d0f;
+  --muted: #777982;
+
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.14);
+
+  --header-h: 78px;
+  --pad: 28px;
+  --pad-sm: 16px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --shell: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+/* =========================
+   Header (same as about/work)
+========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+  padding: 0 var(--pad);
+}
+
+.brand__name {
+  font-family: "bogart", sans-serif;
+  font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 44px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav__link {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 10px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.nav__link:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.nav__pill {
+  padding: 10px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 99px;
+  transition:
+    transform 0.25s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+.mobile-menu {
+  display: none;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.mobile-menu.is-open {
+  display: block;
+}
+
+.mobile-menu__inner {
+  padding: 14px var(--pad) 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.mobile-link {
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.35);
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.mobile-link.is-active {
+  border-color: var(--line-strong);
+  font-weight: 600;
+}
+
+/* =========================
+   Page
+========================= */
+.page {
+  padding: 0 var(--pad) 52px;
+}
+
+/* =========================
+   CASE HERO (2/3 image + 1/3 text)
+========================= */
+.case-hero {
+  padding: 22px 0;
+}
+
+.case-hero__grid {
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.case-hero__media {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0)), rgba(255, 255, 255, 0.02);
+}
+
+.case-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Optional: hvis du bruger .case-hero__img på nogle hero-billeder (contain + “frame look”) */
+.case-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 28px;
+  transform: translateZ(0);
+  filter: contrast(1.04) saturate(0.95);
+}
+
+.case-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.case-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.1;
+  mix-blend-mode: multiply;
+}
+
+.case-hero__text {
+  padding: 44px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.case-hero__kicker {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.case-hero__title {
+  margin: 0 0 6px;
+  font-family: "bogart", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(28px, 2.6vw, 42px);
+}
+
+.case-hero__body {
+  margin: 0;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.84);
+  max-width: 42ch;
+}
+
+.case-hero__meta {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.case-hero__meta p {
+  margin: 0;
+}
+
+.case-hero__meta strong {
+  font-weight: 700;
+}
+
+/* =========================
+   Banner stack (970x250)
+========================= */
+.banner-stack {
+  padding: 52px 0;
+  display: grid;
+  gap: 80px;
+}
+
+.banner {
+  margin: 0;
+  /* border: 1px solid var(--line-strong); */
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+
+  /* Holder 970x250-format */
+  aspect-ratio: 970 / 250;
+
+  /* Fyld siden */
+  width: 100%;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* skift til contain hvis du vil undgå crop */
+  object-position: center;
+}
+
+/* =========================
+   Showcase section (video)
+========================= */
+.showcase {
+  padding-top: 22px;
+}
+
+.showcase-card {
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  padding: 28px;
+}
+
+.showcase__inner {
+  width: min(var(--shell), calc(100% - 48px));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.showcase__inner > .frame:only-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+/* =========================
+   Base frame (video/image)
+========================= */
+.frame {
+  --radius: 22px;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  border-radius: var(--radius);
+  display: grid;
+  gap: 10px;
+}
+
+.frame__caption {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  text-align: center;
+}
+
+.frame__screen {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: transparent;
+}
+
+.frame__media {
+  /* border: 1px solid var(--line-strong); */
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Mobile frame – portrait */
+.frame--phone {
+  max-width: 360px;
+  border-radius: 32px;
+}
+
+.frame--phone .frame__screen {
+  aspect-ratio: 9 / 16;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(246, 246, 246, 0.75);
+  background: #000;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 920px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .page {
+    padding-left: var(--pad-sm);
+    padding-right: var(--pad-sm);
+  }
+
+  .mobile-menu__inner {
+    padding-left: var(--pad-sm);
+    padding-right: var(--pad-sm);
+  }
+
+  .case-hero__grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .case-hero__media {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    min-height: 52vh;
+  }
+
+  .case-hero__text {
+    padding: 26px 22px;
+  }
+
+  .showcase__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .showcase-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .frame--phone {
+    transform: scale(0.95);
+  }
+}

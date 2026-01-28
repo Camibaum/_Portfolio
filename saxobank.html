@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/vbt4cda.css">
+    <link rel="stylesheet" href="saxobank.css">
+    <title>Case</title>
+</head>
+
+
+<body data-page="case">
+    <!-- HEADER (same as about/work) -->
+    <header class="site-header" data-header>
+        <div class="header-inner">
+            <a class="brand" href="home.html" aria-label="Go to Home">
+                <span class="brand__name">Camilla Baumgarten</span>
+            </a>
+
+            <nav class="nav" aria-label="Primary navigation">
+                <a class="nav__link" href="home.html">Home</a>
+                <a class="nav__link" href="index.html">Work</a>
+                <a class="nav__link" href="about.html">About</a>
+                <a class="nav__link nav__pill" href="#">Contact ↗</a>
+            </nav>
+
+            <button class="burger" type="button" data-burger aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+            <div class="mobile-menu__inner">
+                <a class="mobile-link" href="home.html">Home</a>
+                <a class="mobile-link" href="index.html">Work</a>
+                <a class="mobile-link" href="about.html">About</a>
+                <a class="mobile-link" href="#">Contact ↗</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="page">
+        <!-- HERO (behold som nu) -->
+        <section class="case-hero" aria-label="Case hero">
+            <div class="case-hero__grid">
+                <div class="case-hero__media" aria-hidden="true">
+                    <img src="/saxobank/banner-x.png" alt="" />
+                </div>
+
+                <div class="case-hero__text">
+                    <p class="case-hero__kicker">Case</p>
+                    <h1 class="case-hero__title">SAXO Bank</h1>
+
+                    <p class="case-hero__body">
+                    </p>
+
+                    <!-- <div class="case-hero__meta">
+                        <p><strong>Role</strong><br />Campaign: Website design, social media, newsletter</p>
+                        <p><strong>Year</strong><br />2024</p>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNERS (970x250) -->
+        <section class="banner-stack" aria-label="Bannere">
+            <figure class="banner">
+                <img src="/saxobank/Banner-3.png" alt="Banner 1" loading="lazy" />
+            </figure>
+
+            <figure class="banner">
+                <img src="/saxobank/Banner-2.png" alt="Banner 2" loading="lazy" />
+            </figure>
+
+            <figure class="banner">
+                <img src="/saxobank/Banner-1.png" alt=" Banner 3" loading="lazy" />
+            </figure>
+        </section>
+
+        <!-- Video galleri (behold til sidst) -->
+        <section class="showcase" aria-label="Video mockups">
+            <div class="showcase-card">
+                <div class="showcase__inner">
+                    <figure class="frame frame--phone frame--on-light">
+                        <div class="frame__screen">
+                            <video class="frame__media" autoplay muted loop playsinline preload="metadata"
+                                poster="billede1.png">
+                                <source src="bareen.mov" type="video/mp4" />
+                            </video>
+                        </div>
+                        <figcaption class="frame__caption">SoMe / Mobile</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
